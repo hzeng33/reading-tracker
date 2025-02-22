@@ -1,0 +1,130 @@
+swagger: '2.0'
+info:
+  contact: {}
+  title: Reading-Tracker-API
+  version: 1.0.0
+basePath: 'api/v1'
+paths:
+  /auth/login:
+    post:
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            properties:
+              email:
+                example: peter@hotmail.com
+                type: string
+              password:
+                example: Mysecret
+                type: string
+            type: object
+      responses:
+        '200':
+          description: ''
+      description: Login User
+      operationId: loginUser
+      summary: Login User
+  /auth/register:
+    post:
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            properties:
+              email:
+                example: peter@hotmail.com
+                type: string
+              name:
+                example: Peter
+                type: string
+              password:
+                example: Mysecret
+                type: string
+            type: object
+      responses:
+        '200':
+          description: ''
+      description: Register User
+      operationId: registerUser
+      summary: Register User
+  /books:
+    get:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: Get All Books
+      operationId: getAllBooks
+      summary: Get All Books
+    post:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: Create Book
+      operationId: createBook
+      summary: Create Book
+  /books/{id}:
+    get:
+      parameters:
+        - in: path
+          name: id # Note the name is the same as in the path
+          required: true
+          schema:
+            type: string
+            minimum: 1
+          description: The book ID
+          
+    patch:
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            properties:
+              author:
+                example: Stefany Valentine
+                type: string
+              category:
+                example: fiction
+                type: string
+              currentPage:
+                example: 30
+                type: number
+              status:
+                example: Reading
+                type: string
+              title:
+                example: First love language
+                type: string
+            type: object
+      responses:
+        '200':
+          description: ''
+      description: Update Single Book
+      operationId: updateSingleBook
+      summary: Update Single Book
+      
+    get:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: Get Single Book
+      operationId: getSingleBook
+      summary: Get Single Book
+  
+    delete:
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      description: Delete Single Book
+      operationId: deleteSingleBook
+      summary: Delete Single Book
