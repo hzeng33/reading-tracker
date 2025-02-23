@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Archivo", serif;
+  background-image: url("./img/book.jpg");
+  background-size: cover;
+}
+
+/* Navbar */
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(0, 120, 120);
+  color: white;
+  padding: 0 10px;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-left h1 {
+  font-size: 2rem;
+  margin: 0;
+  float: left;
+}
+
+.nav-right {
+  font-size: 1.2rem;
+  float: right;
+}
+
+.nav-right button {
+  background-color: cornflowerblue;
+  color: black;
+  border: none;
+  padding: 3px 10px;
+  margin-left: 0.5em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-right button:hover {
+  background-color: greenyellow;
+}
+
+/* Landing page */
+#landing-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#landing-page p {
+  font-family: "Oleo Script", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3rem;
+  color: black;
+  margin-bottom: 0.5em;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-container button {
+  background-color: rgb(129, 170, 247);
+  color: black;
+  border: none;
+  padding: 3px 10px;
+  margin: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-container button:hover {
+  background-color: greenyellow;
+}
+
+#message {
+  text-align: center;
+  font-size: 1.5rem;
+  color: black;
+  margin: 1rem auto;
+}
+
+/* Login and Register */
+#login-form,
+#register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh-70px);
+  padding: 10px;
+  margin-top: 7.6rem;
+}
+
+#login-form form,
+#register-form form {
+  background-color: azure;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: fit-content;
+}
+
+#login-form div,
+#register-form div {
+  margin-bottom: 1.2rem;
+}
+
+#login-form label,
+#register-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: black;
+}
+
+#login-form input,
+#register-form input {
+  width: 100%;
+  padding: 0.48rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 1rem;
+}
+
+#login-form button,
+#register-form button {
+  background-color: rgb(159, 192, 255);
+  color: black;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+#login-submit:hover,
+#register-submit:hover,
+#login-cancel:hover,
+#register-cancel:hover {
+  background-color: greenyellow;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+}
