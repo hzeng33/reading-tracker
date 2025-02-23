@@ -13,8 +13,8 @@
       <div class="nav-left">
         <h1>Reading Tracker</h1>
       </div>
-      <div class="nav-right" id="user-info" style="display: none">
-        <span id="greeting">Hi, <span id="user-name">User</span></span>
+      <div class="nav-right">
+        <p id="user-info">Hi, <span id="user-name"></span></p>
         <button type="button" id="logoff-btn">Log Off</button>
       </div>
     </nav>
@@ -80,6 +80,7 @@
           type="text"
           id="search-bar"
           placeholder="Search by book title..." />
+        <button type="button" id="add-book">Add Book</button>
         <button type="button" id="sort-asc">Ascending</button>
         <button type="button" id="sort-desc">Descending</button>
       </div>
@@ -95,10 +96,9 @@
           <th colspan="2"></th>
         </tr>
       </table>
-      <button type="button" id="add-book">Add Book</button>
 
       <div id="edit-book-container" style="display: none">
-        <form id="edit-book-form">
+        <form>
           <div>
             <label for="title">Title:</label>
             <input type="text" id="title" />

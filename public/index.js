@@ -36,21 +36,13 @@ export const setToken = (value) => {
 
 export let message = null;
 
+import { showBooks, handleBooks, handleAddEdit } from "./books.js";
+import { handleLogin, showLoginForm } from "./login.js";
+import { handleRegister, showRegisterForm } from "./register.js";
+
 const landingPage = document.getElementById("landing-page");
-const loginForm = document.getElementById("login-form");
-const registerForm = document.getElementById("register-form");
 const loginBtn = document.getElementById("login-btn");
 const registerBtn = document.getElementById("register-btn");
-const loginCancelBtn = document.getElementById("login-cancel");
-const registerCancelBtn = document.getElementById("register-cancel");
-
-export const showLoginForm = () => {
-  setDiv(loginForm);
-};
-
-export const showRegisterForm = () => {
-  setDiv(registerForm);
-};
 
 export const showLandingPage = () => {
   setDiv(landingPage);
@@ -60,18 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
   activeDiv = landingPage;
   token = localStorage.getItem("token");
   message = document.getElementById("message");
-  loginBtn.addEventListener("click", () => {
-    showLoginForm();
-  });
-  registerBtn.addEventListener("click", () => {
-    showRegisterForm();
-  });
-  loginCancelBtn.addEventListener("click", () => {
-    showLandingPage();
-  });
-  registerCancelBtn.addEventListener("click", () => {
-    showLandingPage();
-  });
+  loginBtn.addEventListener("click", showLoginForm);
+  handleLogin();
+  registerBtn.addEventListener("click", showRegisterForm);
+  handleRegister();
+  handleBooks();
+  handleAddEdit();
   if (token) {
     showBooks();
   } else {
