@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading Tracker App</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- Navbar on the top-->
+    <nav id="navbar">
+      <div class="nav-left">
+        <h1>Reading Tracker</h1>
+      </div>
+      <div id="nav-right">
+        <div id="user-info">Welcome!</div>
+        <button type="button" id="logoff-btn">Log Off</button>
+      </div>
+    </nav>
+
+    <!--Landing Page-->
+    <div id="landing-page">
+      <p>
+        Discover the joy of reading - track your progress and stay motivated!
+      </p>
+      <div class="btn-container">
+        <button type="button" id="login-btn">Log In</button>
+        <button type="button" id="register-btn">Register</button>
+      </div>
+    </div>
+
+    <!--Login Form-->
+    <div id="login-form" style="display: none">
+      <form>
+        <div>
+          <label for="login-email">Email:</label>
+          <input type="email" id="login-email" required />
+        </div>
+        <div>
+          <label for="login-password">Password:</label>
+          <input type="password" id="login-password" required />
+        </div>
+        <button type="button" id="login-submit">Log In</button>
+        <button type="button" id="login-cancel">Cancel</button>
+      </form>
+    </div>
+
+    <!--Register Form-->
+    <div id="register-form" style="display: none">
+      <form>
+        <div>
+          <label for="reg-name">Name:</label>
+          <input type="text" id="reg-name" required />
+        </div>
+        <div>
+          <label for="reg-email">Email:</label>
+          <input type="email" id="reg-email" required />
+        </div>
+        <div>
+          <label for="reg-password">Password:</label>
+          <input type="password" id="reg-password" required />
+        </div>
+        <div>
+          <label for="reg-password2">Verify Password:</label>
+          <input type="password" id="reg-password2" required />
+        </div>
+        <button type="button" id="register-submit">Register</button>
+        <button type="button" id="register-cancel">Cancel</button>
+      </form>
+    </div>
+
+    <!--Tracker Page (shown after successful log in)-->
+    <div id="tracker-page" style="display: none">
+      <!--search and sort-->
+      <div id="tracker-controls">
+        <input
+          type="text"
+          id="search-bar"
+          placeholder="Search by book title..." />
+        <button type="button" id="add-book">Add Book</button>
+        <button type="button" id="sort-asc">Ascending</button>
+        <button type="button" id="sort-desc">Descending</button>
+      </div>
+
+      <!--Tracker Table-->
+      <table id="tracker-table">
+        <tr id="books-table-header">
+          <th>Title</th>
+          <th>Author</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th>Current Page</th>
+          <th colspan="2"></th>
+        </tr>
+      </table>
+    </div>
+
+    <div id="insert-form" style="display: none">
+      <form>
+        <div>
+          <label for="title">Title:</label>
+          <input type="text" id="title" />
+        </div>
+        <div>
+          <label for="author">Author:</label>
+          <input type="text" id="author" />
+        </div>
+        <div>
+          <label for="category">Category:</label>
+          <input type="text" id="category" />
+        </div>
+        <div>
+          <label for="status">Status:</label>
+          <select id="status">
+            <option value="Want to Read">Want to Read</option>
+            <option value="Reading">Reading</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+        <div>
+          <label for="currentPage">Current Page:</label>
+          <input type="number" id="currentPage" min="0" />
+        </div>
+        <button type="button" id="save-btn">Save</button>
+        <button type="button" id="cancel-edit-btn">Cancel</button>
+      </form>
+    </div>
+
+    <footer id="footer">
+      <p id="copy-right"></p>
+    </footer>
+
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>

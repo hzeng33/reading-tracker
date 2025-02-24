@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Archivo", serif;
+  background-image: url("./img/book.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Navbar */
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(0, 120, 120);
+  color: white;
+  padding: 0 10px;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 7;
+}
+
+.nav-left h1 {
+  font-size: 2rem;
+  margin: 0;
+  float: left;
+}
+
+#nav-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  float: right;
+}
+
+#user-info {
+  font-size: 1rem;
+  color: black;
+  font-size: 20px;
+}
+
+#logoff-btn {
+  background-color: cornflowerblue;
+  color: black;
+  border: none;
+  padding: 2px 2px;
+  margin-left: 0.5em;
+  margin-right: 0.8em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+}
+
+#logoff-btn:hover {
+  background-color: greenyellow;
+}
+
+/* Landing page */
+#landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 8.6em;
+}
+
+#landing-page p {
+  font-family: "Oleo Script", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3rem;
+  color: black;
+  margin-bottom: 0.5em;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn-container button {
+  background-color: rgb(129, 170, 247);
+  color: black;
+  border: none;
+  padding: 3px 10px;
+  margin: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-container button:hover {
+  background-color: greenyellow;
+}
+
+/* Login and Register */
+#login-form,
+#register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh-70px);
+  padding: 10px;
+  margin-top: 7.6rem;
+}
+
+/* Forms styling */
+#login-form form,
+#register-form form,
+#insert-form form {
+  background-color: azure;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: fit-content;
+}
+
+#login-form div,
+#register-form div,
+#insert-form div {
+  margin-bottom: 1.2rem;
+}
+
+#login-form label,
+#register-form label,
+#insert-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: black;
+}
+
+#login-form input,
+#register-form input,
+#insert-form input,
+#insert-form select {
+  width: 100%;
+  padding: 0.48rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 1rem;
+}
+
+#login-form button,
+#register-form button,
+#insert-form button {
+  background-color: rgb(159, 192, 255);
+  color: black;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+#login-submit:hover,
+#register-submit:hover,
+#login-cancel:hover,
+#register-cancel:hover,
+#insert-form button:hover {
+  background-color: greenyellow;
+}
+
+/* Tracker Page */
+#tracker-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh-70px);
+  padding: 1rem;
+  margin-top: 5rem;
+}
+
+#tracker-controls {
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: fit-content;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+#search-bar {
+  width: 100%;
+  padding: 0.48rem;
+  font-size: 1rem;
+}
+
+#tracker-controls button {
+  background-color: rgb(159, 192, 255);
+  color: black;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+#tracker-controls button:hover {
+  background-color: greenyellow;
+}
+
+/* Tracker Table */
+#tracker-table {
+  background-color: azure;
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: fit-content;
+}
+
+#tracker-table th,
+#tracker-table td {
+  padding: 0.2rem 1rem;
+  text-align: center;
+  color: black;
+  font-size: 1rem;
+}
+
+#tracker-table th {
+  font-weight: 700;
+}
+
+#tracker-table td button {
+  background-color: rgb(159, 192, 255);
+  color: black;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+#tracker-table td button:hover {
+  background-color: greenyellow;
+}
+
+/* Edit book form */
+#insert-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4.4em;
+}
+
+/* Footer */
+#footer {
+  text-align: center;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+#copy-right {
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+}
