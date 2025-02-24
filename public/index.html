@@ -13,8 +13,8 @@
       <div class="nav-left">
         <h1>Reading Tracker</h1>
       </div>
-      <div class="nav-right">
-        <p id="user-info">Hi, <span id="user-name"></span></p>
+      <div id="nav-right">
+        <div id="user-info">Welcome!</div>
         <button type="button" id="logoff-btn">Log Off</button>
       </div>
     </nav>
@@ -28,7 +28,6 @@
         <button type="button" id="login-btn">Log In</button>
         <button type="button" id="register-btn">Register</button>
       </div>
-      <p id="message"></p>
     </div>
 
     <!--Login Form-->
@@ -73,7 +72,6 @@
 
     <!--Tracker Page (shown after successful log in)-->
     <div id="tracker-page" style="display: none">
-      <p id="books-message"></p>
       <!--search and sort-->
       <div id="tracker-controls">
         <input
@@ -96,38 +94,42 @@
           <th colspan="2"></th>
         </tr>
       </table>
-
-      <div id="edit-book-container" style="display: none">
-        <form>
-          <div>
-            <label for="title">Title:</label>
-            <input type="text" id="title" />
-          </div>
-          <div>
-            <label for="author">Author:</label>
-            <input type="text" id="author" />
-          </div>
-          <div>
-            <label for="category">Category:</label>
-            <input type="text" id="category" />
-          </div>
-          <div>
-            <label for="status">Status:</label>
-            <select id="status">
-              <option value="want-to-read">Want to Read</option>
-              <option value="reading">Reading</option>
-              <option value="completed">Completed</option>
-            </select>
-          </div>
-          <div>
-            <label for="currentPage">Current Page:</label>
-            <input type="number" id="currentPage" min="0" />
-          </div>
-          <button type="button" id="save-btn">Save</button>
-          <button type="button" id="cancel-edit-btn">Cancel</button>
-        </form>
-      </div>
     </div>
+
+    <div id="insert-form" style="display: none">
+      <form>
+        <div>
+          <label for="title">Title:</label>
+          <input type="text" id="title" />
+        </div>
+        <div>
+          <label for="author">Author:</label>
+          <input type="text" id="author" />
+        </div>
+        <div>
+          <label for="category">Category:</label>
+          <input type="text" id="category" />
+        </div>
+        <div>
+          <label for="status">Status:</label>
+          <select id="status">
+            <option value="Want to Read">Want to Read</option>
+            <option value="Reading">Reading</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+        <div>
+          <label for="currentPage">Current Page:</label>
+          <input type="number" id="currentPage" min="0" />
+        </div>
+        <button type="button" id="save-btn">Save</button>
+        <button type="button" id="cancel-edit-btn">Cancel</button>
+      </form>
+    </div>
+
+    <footer id="footer">
+      <p id="copy-right"></p>
+    </footer>
 
     <script src="./index.js" type="module"></script>
   </body>

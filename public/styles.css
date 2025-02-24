@@ -6,7 +6,8 @@ body {
   padding: 0;
   font-family: "Archivo", serif;
   background-image: url("./img/book.jpg");
-  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Navbar */
@@ -21,7 +22,7 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 7;
 }
 
 .nav-left h1 {
@@ -30,7 +31,7 @@ body {
   float: left;
 }
 
-.nav-right {
+#nav-right {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -39,35 +40,36 @@ body {
 }
 
 #user-info {
-  font-size: 1.5rem;
-  margin-right: 0.6rem;
+  font-size: 1rem;
   color: black;
+  font-size: 20px;
 }
 
-.nav-right button {
+#logoff-btn {
   background-color: cornflowerblue;
   color: black;
   border: none;
-  padding: 3px 10px;
+  padding: 2px 2px;
   margin-left: 0.5em;
+  margin-right: 0.8em;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s ease;
-  margin-right: 1rem;
+  font-size: 1.1rem;
 }
 
-.nav-right button:hover {
+#logoff-btn:hover {
   background-color: greenyellow;
 }
 
 /* Landing page */
 #landing-page {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin-top: 8.6em;
 }
 
 #landing-page p {
@@ -101,13 +103,6 @@ body {
   background-color: greenyellow;
 }
 
-#message {
-  text-align: center;
-  font-size: 1.5rem;
-  color: black;
-  margin: 1rem auto;
-}
-
 /* Login and Register */
 #login-form,
 #register-form {
@@ -123,7 +118,7 @@ body {
 /* Forms styling */
 #login-form form,
 #register-form form,
-#edit-book-container form {
+#insert-form form {
   background-color: azure;
   padding: 2rem;
   border-radius: 8px;
@@ -134,13 +129,13 @@ body {
 
 #login-form div,
 #register-form div,
-#edit-book-container div {
+#insert-form div {
   margin-bottom: 1.2rem;
 }
 
 #login-form label,
 #register-form label,
-#edit-book-container label {
+#insert-form label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -149,8 +144,8 @@ body {
 
 #login-form input,
 #register-form input,
-#edit-book-container input,
-#edit-book-container select {
+#insert-form input,
+#insert-form select {
   width: 100%;
   padding: 0.48rem;
   border-top: none;
@@ -161,7 +156,7 @@ body {
 
 #login-form button,
 #register-form button,
-#edit-book-container button {
+#insert-form button {
   background-color: rgb(159, 192, 255);
   color: black;
   border: none;
@@ -176,7 +171,7 @@ body {
 #register-submit:hover,
 #login-cancel:hover,
 #register-cancel:hover,
-#edit-book-container button:hover {
+#insert-form button:hover {
   background-color: greenyellow;
 }
 
@@ -236,9 +231,10 @@ body {
 
 #tracker-table th,
 #tracker-table td {
-  padding: 0.4rem 1.3rem;
+  padding: 0.2rem 1rem;
   text-align: center;
   color: black;
+  font-size: 1rem;
 }
 
 #tracker-table th {
@@ -249,11 +245,11 @@ body {
   background-color: rgb(159, 192, 255);
   color: black;
   border: none;
-  padding: 0.6rem 1.3rem;
+  padding: 0.5rem;
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
-  margin-right: 1rem;
+  margin-right: 5px;
 }
 
 #tracker-table td button:hover {
@@ -261,21 +257,25 @@ body {
 }
 
 /* Edit book form */
-#edit-book-container {
+#insert-form {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-
-#books-message {
-  margin: 1.2rem auto;
-  color: black;
-  font-size: 1rem;
+  margin-top: 4.4em;
 }
 
 /* Footer */
-footer {
-  font-weight: bold;
+#footer {
   text-align: center;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+#copy-right {
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
 }

@@ -1,29 +1,3 @@
-/**Create and add a footer */
-const footer = document.createElement("footer");
-const today = new Date();
-const thisYear = today.getFullYear();
-const copyRight = document.createElement("p");
-const symbol = "\u00A9";
-copyRight.textContent = `${symbol} Hannah Zeng ${thisYear}.`;
-footer.appendChild(copyRight);
-document.body.appendChild(footer);
-
-let activeDiv = null;
-export const setDiv = (newDiv) => {
-  if (newDiv != activeDiv) {
-    if (activeDiv) {
-      activeDiv.style.display = "none";
-    }
-    newDiv.style.display = "flex";
-    activeDiv = newDiv;
-  }
-};
-
-export let inputEnabled = true;
-export const enableInput = (state) => {
-  inputEnabled = state;
-};
-
 export let token = null;
 export const setToken = (value) => {
   token = value;
@@ -34,32 +8,57 @@ export const setToken = (value) => {
   }
 };
 
-export let message = null;
+//// A simple view switcher – assumes each "page" is a container element.
+let activeDiv = null;
+export const setDiv = (newDiv) => {
+  if (activeDiv !== newDiv) {
+    if (activeDiv) {
+      activeDiv.style.display = "none";
+    }
+    newDiv.style.display = "flex";
+    activeDiv = newDiv;
+  }
+};
 
-import { showBooks, handleBooks, handleAddEdit } from "./books.js";
-import { handleLogin, showLoginForm } from "./login.js";
-import { handleRegister, showRegisterForm } from "./register.js";
-
-const landingPage = document.getElementById("landing-page");
-const loginBtn = document.getElementById("login-btn");
-const registerBtn = document.getElementById("register-btn");
-
+//To show landing page.
 export const showLandingPage = () => {
+  const landingPage = document.getElementById("landing-page");
   setDiv(landingPage);
 };
 
+export let inputEnabled = true;
+export const enableInput = (state) => {
+  inputEnabled = state;
+};
+
+import { showLoginForm, handleLogin } from "./login.js";
+import { handleRegister, showRegisterForm } from "./register.js";
+import { logOff } from "./logOff.js";
+import { showReadingTracker, handleTrackerActions } from "./trackerPage.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-  activeDiv = landingPage;
-  token = localStorage.getItem("token");
-  message = document.getElementById("message");
+  const copyRight = document.getElementById("copy-right");
+  const docBtn = document.getElementById("doc-btn");
+  const today = new Date();
+  const thisYear = today.getFullYear();
+  const symbol = "\u00A9";
+  copyRight.textContent = `${symbol} Hannah Zeng ${thisYear}.`;
+
+  const loginBtn = document.getElementById("login-btn");
+  const registerBtn = document.getElementById("register-btn");
+  const logOffBtn = document.getElementById("logoff-btn");
+
   loginBtn.addEventListener("click", showLoginForm);
-  handleLogin();
   registerBtn.addEventListener("click", showRegisterForm);
+  logOffBtn.addEventListener("click", logOff);
+
+  handleLogin();
   handleRegister();
-  handleBooks();
-  handleAddEdit();
+  handleTrackerActions();
+
+  token = localStorage.getItem("token");
   if (token) {
-    showBooks();
+    showReadingTracker();
   } else {
     showLandingPage();
   }
