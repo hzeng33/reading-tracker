@@ -67,7 +67,7 @@ A web application designed to help you keep track of your reading progress. With
    ```
 
 2. **Open in Browser:**
-   Open your browser and navigate to http://localhost:3000.
+   Open your browser and navigate to http://localhost:3000. The app was deployed on Render.com. You can access it at https://reading-tracker-app.onrender.com
 
 3. **How to Use the App:**
 
