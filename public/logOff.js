@@ -1,6 +1,6 @@
 import { setToken, showLandingPage } from "./index.js";
 
-export function logOff() {
+export const logOff = () => {
   setToken(null);
 
   //Clear name
@@ -14,4 +14,4 @@ export function logOff() {
   }
 
   showLandingPage();
-}
+};
