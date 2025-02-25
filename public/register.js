@@ -2,7 +2,7 @@
 import { setDiv, enableInput, setToken, showLandingPage } from "./index.js";
 import { showLoginForm } from "./login.js";
 
-export function handleRegister() {
+export const handleRegister = () => {
   const registerForm = document.getElementById("register-form");
   const nameInput = document.getElementById("reg-name");
   const emailInput = document.getElementById("reg-email");
@@ -32,7 +32,7 @@ export function handleRegister() {
             const data = await response.json();
             if (response.status === 201) {
               alert("Registration successful. Please log in.");
-              
+
               showLoginForm();
 
               nameInput.value = "";
@@ -58,7 +58,7 @@ export function handleRegister() {
       }
     }
   });
-}
+};
 
 export function showRegisterForm() {
   const registerForm = document.getElementById("register-form");

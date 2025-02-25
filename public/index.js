@@ -37,6 +37,9 @@ import { logOff } from "./logOff.js";
 import { showReadingTracker, handleTrackerActions } from "./trackerPage.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const landingPage = document.getElementById("landing-page");
+  activeDiv = landingPage;
+
   const copyRight = document.getElementById("copy-right");
   const docBtn = document.getElementById("doc-btn");
   const today = new Date();

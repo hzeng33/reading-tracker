@@ -1,4 +1,3 @@
-// trackerPage.js
 import { setDiv, token, enableInput } from "./index.js";
 
 const trackerPage = document.getElementById("tracker-page");
@@ -15,23 +14,33 @@ const currentPageInput = document.getElementById("currentPage");
 const saveBtn = document.getElementById("save-btn");
 const cancelEditBtn = document.getElementById("cancel-edit-btn");
 
-// This variable holds the book id being edited (if any)
+//Elements for search and sort.
+const searchBar = document.getElementById("search-bar");
+const searchBtn = document.getElementById("search-btn");
+const sortAscBtn = document.getElementById("sort-asc");
+const sortDsecBtn = document.getElementById("sort-desc");
+
+// This variable holds the book id being edited
 let editingBookId = null;
 
+// Global variables to hold the current books and sort order
+let allBooks = []; // Will store the fetched list of books.
+let currentSort = null; // Can be "asc", "desc", or null.
+
 // Show tracker page
-export function showReadingTracker() {
+export const showReadingTracker = () => {
   setDiv(trackerPage);
 
   showBooks();
-}
+};
 
 // Attach event listeners for tracker page buttons.
-export function handleTrackerActions() {
+export const handleTrackerActions = () => {
   // Listener for "Add Book" button:
   const addBookBtn = document.getElementById("add-book");
   addBookBtn.addEventListener("click", () => {
     editingBookId = null;
-    // Clear form inputs
+
     titleInput.value = "";
     authorInput.value = "";
     categoryInput.value = "";
@@ -41,7 +50,7 @@ export function handleTrackerActions() {
     setDiv(insertForm);
   });
 
-  // Delegate edit and delete button clicks on the tracker table.
+  // Handle edit and delete button clicks on the tracker table.
   trackerTable.addEventListener("click", (e) => {
     if (e.target.nodeName === "BUTTON") {
       if (e.target.classList.contains("editButton")) {
@@ -92,7 +101,7 @@ export function handleTrackerActions() {
             alert(data.msg);
           }
         } catch (error) {
-          console.log(error);
+          console.error(error);
           alert("A communication error occurred.");
         }
         enableInput(true);
@@ -101,7 +110,29 @@ export function handleTrackerActions() {
       }
     }
   });
-}
+
+  // When "Ascending" button is clicked, set sort order to ascending.
+  sortAscBtn.addEventListener("click", () => {
+    currentSort = "asc";
+    updateDisplay();
+  });
+
+  //When "Dscending" button is clicked, set sort order to descending.
+  sortDsecBtn.addEventListener("click", () => {
+    currentSort = "desc";
+    updateDisplay();
+  });
+
+  // When the user types in the search bar, update the display.
+  searchBar.addEventListener("input", () => {
+    updateDisplay();
+  });
+
+  // When the new Search button is clicked, update the display.
+  searchBtn.addEventListener("click", () => {
+    updateDisplay();
+  });
+};
 
 // Load books from the server and display them in the table.
 export async function showBooks() {
@@ -115,15 +146,37 @@ export async function showBooks() {
       },
     });
     const data = await response.json();
-    let rows = [booksTableHeader];
+
     if (response.status === 200) {
-      if (data.count === 0) {
-        trackerTable.replaceChildren(...rows);
-      } else {
-        data.books.forEach((book) => {
-          let row = document.createElement("tr");
-          // Create table cells for book properties.
-          row.innerHTML = `
+      allBooks = data.books;
+
+      updateDisplay();
+    } else {
+      alert(data.msg);
+    }
+  } catch (error) {
+    console.error(error);
+    alert("A communication error occurred.");
+  }
+
+  enableInput(true);
+  setDiv(trackerPage);
+}
+
+// Helper function to render an array of books into the tracker table.
+const renderBooks = (booksArray) => {
+  let rows = [booksTableHeader];
+
+  if (booksArray.length === 0) {
+    trackerTable.replaceChildren(...rows);
+    return;
+  }
+
+  booksArray.forEach((book) => {
+    let row = document.createElement("tr");
+
+    // Create table cells for book properties.
+    row.innerHTML = `
             <td>${book.title}</td>
             <td>${book.author}</td>
             <td>${book.category}</td>
@@ -132,20 +185,29 @@ export async function showBooks() {
             <td><button type="button" class="editButton" data-id="${book._id}">Edit</button></td>
             <td><button type="button" class="deleteButton" data-id="${book._id}">Delete</button></td>
           `;
-          rows.push(row);
-        });
-        trackerTable.replaceChildren(...rows);
-      }
-    } else {
-      alert(data.msg);
-    }
-  } catch (error) {
-    console.error(error);
-    alert("A communication error occurred.");
+    rows.push(row);
+  });
+  trackerTable.replaceChildren(...rows);
+};
+
+//// Helper function to update the table based on the current search text and sort order.
+const updateDisplay = () => {
+  const searchTerm = searchBar.value.toLowerCase();
+
+  // Filter books using the search term.
+  let filteredBooks = allBooks.filter((book) =>
+    book.title.toLowerCase().includes(searchTerm)
+  );
+
+  // Sort the filtered books if a sort order is active.
+  if (currentSort === "asc") {
+    filteredBooks.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (currentSort === "desc") {
+    filteredBooks.sort((a, b) => b.title.localeCompare(a.title));
   }
-  enableInput(true);
-  setDiv(trackerPage);
-}
+
+  renderBooks(filteredBooks);
+};
 
 // Load a book's data into the form for editing.
 async function loadBookForEditing(bookId) {
@@ -191,7 +253,7 @@ async function deleteBook(bookId) {
       },
     });
     if (response.status === 204) {
-      alert(`Book ${bookId} deleted.`);
+      alert(`Book with id:${bookId} deleted.`);
       await showBooks();
     } else {
       const data = await response.json();
